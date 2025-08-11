@@ -8,14 +8,14 @@ int main(){
     cout<<"Enter two numbers";
     cin>>a>> b;
 
-    int minValue;
+    int x;
     if (a<b) {
-        minValue=a;
+        x=a;
     } else {
-        minValue=b;
+        x=b;
     }
 
-    for (int i=1;i<=minValue;i++) {
+    for (int i=1;i<=x;i++) {
         if (a%i==0&&b%i==0) {
             hcf = i;
         }
@@ -24,3 +24,4 @@ int main(){
     cout << "HCF=" << hcf << endl;
     return 0;
 }
+
