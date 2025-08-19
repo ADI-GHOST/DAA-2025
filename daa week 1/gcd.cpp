@@ -4,7 +4,7 @@ using namespace std;
 int main(){
     int a;
     int b;
-    int hcf;
+    int gcd;
     cout<<"Enter two numbers";
     cin>>a>> b;
 
@@ -17,11 +17,12 @@ int main(){
 
     for (int i=1;i<=x;i++) {
         if (a%i==0&&b%i==0) {
-            hcf = i;
+            gcd = i;
         }
     }
 
-    cout << "HCF=" << hcf << endl;
+    cout << "gcd" << gcd << endl;
     return 0;
 }
+
 
