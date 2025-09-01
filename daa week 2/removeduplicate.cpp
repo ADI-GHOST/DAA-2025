@@ -1,34 +1,43 @@
 #include <iostream>
+
 using namespace std;
 
-int main() {
-    int arr[] = {1, 2, 3, 2, 4, 3, 5, 1};
-    int n = sizeof(arr) / sizeof(arr[0]);
+int main()
+{
+    int arr[50],n;
+    cout<<"how many elements?"<<endl;
+    cin>>n;
+    cout<<"enter the elements:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    cout<<"after removing the duplicates:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+         {
+            if(arr[i]==arr[j])
+            {
+                while(j<n)
+                {
+                    arr[j]=arr[j+1];
+                    j++;
 
-    int newArr[n];  
-    int newSize = 0;
-
-    for (int i = 0; i < n; i++) {
-        bool isDuplicate = false;
-
-        for (int j = 0; j < newSize; j++) {
-            if (arr[i] == newArr[j]) {
-                isDuplicate = true;
-                break;
+                }
+                --n;
             }
-        }
+            else{
+                continue;
+            }
 
-        if (!isDuplicate) {
-            newArr[newSize] = arr[i];
-            newSize++;
         }
     }
 
-    cout << "without duplicates ";
-    for (int i = 0; i < newSize; i++) {
-        cout << newArr[i] << " ";
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
     }
-    cout << endl;
 
     return 0;
 }
