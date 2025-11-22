@@ -18,10 +18,15 @@ int main() {
 
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
-            if (s1[i - 1] == s2[j - 1])
+            if (s1[i - 1] == s2[j - 1]) {
                 dp[i][j] = 1 + dp[i - 1][j - 1];
-            else
-                dp[i][j] = (dp[i - 1][j] > dp[i][j - 1]) ? dp[i - 1][j] : dp[i][j - 1];
+            } 
+            else {
+                if (dp[i - 1][j] > dp[i][j - 1])
+                    dp[i][j] = dp[i - 1][j];
+                else
+                    dp[i][j] = dp[i][j - 1];
+            }
         }
     }
 
@@ -38,10 +43,12 @@ int main() {
             i--;
             j--;
         }
-        else if (dp[i - 1][j] > dp[i][j - 1])
+        else if (dp[i - 1][j] > dp[i][j - 1]) {
             i--;
-        else
+        }
+        else {
             j--;
+        }
     }
 
     temp[idx] = '\0';
@@ -52,7 +59,7 @@ int main() {
         temp[idx - 1 - a] = t;
     }
 
-    cout << "LCS = " << temp << "\n";
+    cout << "One LCS = " << temp << "\n";
 
     return 0;
 }
