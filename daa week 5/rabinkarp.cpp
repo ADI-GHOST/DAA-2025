@@ -1,42 +1,30 @@
-#include <stdio.h>
-#include <string.h>
+#include <bits/stdc++.h>
+using namespace std;
 
 int main() {
-    char t[] = "ababcabcababc";
-    char p[] = "abc";
+    string t = "ababcabcababc";
+    string p = "abc";
 
-    int n = strlen(t);
-    int m = strlen(p);
-
-    int i, j;
+    int n = t.size();
+    int m = p.size();
 
     int hp = 0;
 
-    // pattern hash
-    for (i = 0; i < m; i++) {
-        hp = hp + (p[i] - 'a' + 1);   // a=1 b=2
-    }
+    for (int i = 0; i < m; i++)
+        hp = hp + (p[i] - 'a' + 1);
 
-    // check every window
-    for (i = 0; i <= n - m; i++) {
+    for (int i = 0; i <= n - m; i++) {
 
-        int ht = 0;   // re-calc hash from zero
+        int ht = 0;
 
-        // compute hash of window t[i..i+m-1]
-        for (j = 0; j < m; j++) {
+        for (int j = 0; j < m; j++)
             ht = ht + (t[i + j] - 'a' + 1);
-        }
 
-        // compare hashes
         if (ht == hp) {
-            for (j = 0; j < m; j++) {
-                if (t[i + j] != p[j]) break;
-            }
-            if (j == m) {
-                printf("match at index %d\n", i);
-            }
+            int j = 0;
+            while (j < m && t[i + j] == p[j]) j++;
+            if (j == m) cout << "match at index " << i << "\n";
         }
     }
-
-    return 0;
 }
+
