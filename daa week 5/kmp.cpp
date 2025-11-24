@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -8,7 +8,7 @@ int main() {
     int n = t.size();
     int m = p.size();
 
-    vector<int> l(m);
+    int l[100];
     int a = 0, b = 1;
     l[0] = 0;
 
@@ -34,9 +34,7 @@ int main() {
         if (t[i] == p[j]) {
             i = i + 1;
             j = j + 1;
-        }
-
-        else if (t[i] != p[j]) {
+        } else {
             if (j != 0)
                 j = l[j - 1];
             else
@@ -49,4 +47,3 @@ int main() {
         }
     }
 }
-
